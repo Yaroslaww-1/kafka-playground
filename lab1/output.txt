@@ -1,0 +1,836 @@
+Attaching to redpanda-1, redpanda-2
+redpanda-1  | + /usr/local/bin/supervisord -d
+redpanda-1  | + '[' '' = true ']'
+redpanda-1  | + exec /usr/bin/rpk redpanda start --smp 1 --memory 1G --reserve-memory 0M --overprovisioned --node-id 0 --check=false --pandaproxy-addr INSIDE://0.0.0.0:28082,OUTSIDE://0.0.0.0:8082 --advertise-pandaproxy-addr INSIDE://redpanda-1:28082,OUTSIDE://localhost:8082 --kafka-addr INSIDE://0.0.0.0:29092,OUTSIDE://0.0.0.0:9092 --advertise-kafka-addr INSIDE://redpanda-1:29092,OUTSIDE://localhost:9092 --rpc-addr 0.0.0.0:33145 --advertise-rpc-addr redpanda-1:33145
+redpanda-1  | WARNING: This is a setup for development purposes only; in this mode your clusters may run unrealistically fast and data can be corrupted any time your computer shuts down uncleanly.
+redpanda-1  | We'd love to hear about your experience with Redpanda:
+redpanda-1  | https://redpanda.com/feedback
+redpanda-1  | Starting redpanda...
+redpanda-1  | Running:
+redpanda-1  | /opt/redpanda/bin/redpanda redpanda --redpanda-cfg /etc/redpanda/redpanda.yaml --lock-memory=false --reserve-memory=0M --unsafe-bypass-fsync=true --memory=1G --smp=1 --overprovisioned
+redpanda-2  | + /usr/local/bin/supervisord -d
+redpanda-2  | + '[' '' = true ']'
+redpanda-2  | + exec /usr/bin/rpk redpanda start --smp 1 --memory 1G --reserve-memory 0M --overprovisioned --node-id 1 --seeds '"redpanda-1:33145"' --check=false --pandaproxy-addr INSIDE://0.0.0.0:28083,OUTSIDE://0.0.0.0:8083 --advertise-pandaproxy-addr INSIDE://redpanda-2:28083,OUTSIDE://localhost:8083 --kafka-addr INSIDE://0.0.0.0:29093,OUTSIDE://0.0.0.0:9093 --advertise-kafka-addr INSIDE://redpanda-2:29093,OUTSIDE://localhost:9093 --rpc-addr 0.0.0.0:33146 --advertise-rpc-addr redpanda-2:33146
+redpanda-2  | WARNING: This is a setup for development purposes only; in this mode your clusters may run unrealistically fast and data can be corrupted any time your computer shuts down uncleanly.
+redpanda-2  | We'd love to hear about your experience with Redpanda:
+redpanda-2  | https://redpanda.com/feedback
+redpanda-2  | Starting redpanda...
+redpanda-2  | Running:
+redpanda-2  | /opt/redpanda/bin/redpanda redpanda --redpanda-cfg /etc/redpanda/redpanda.yaml --reserve-memory=0M --smp=1 --memory=1G --unsafe-bypass-fsync=true --overprovisioned --lock-memory=false
+redpanda-1  | 
+redpanda-1  | 
+redpanda-1  | Welcome to the Redpanda community!
+redpanda-1  | 
+redpanda-1  | Documentation: https://docs.redpanda.com - Product documentation site
+redpanda-1  | GitHub Discussion: https://github.com/redpanda-data/redpanda/discussions - Longer, more involved discussions
+redpanda-1  | GitHub Issues: https://github.com/redpanda-data/redpanda/issues - Report and track issues with the codebase
+redpanda-1  | Support: https://support.redpanda.com - Contact the support team privately
+redpanda-1  | Product Feedback: https://redpanda.com/feedback - Let us know how we can improve your experience
+redpanda-1  | Slack: https://redpanda.com/slack - Chat about all things Redpanda. Join the conversation!
+redpanda-1  | Twitter: https://twitter.com/redpandadata - All the latest Redpanda news!
+redpanda-1  | 
+redpanda-1  | 
+redpanda-1  | WARN  2023-05-30 23:31:26,135 [shard 0] seastar - Creation of perf_event based stall detector failed, falling back to posix timer: std::__1::system_error (error system:1, perf_event_open() failed: Operation not permitted)
+redpanda-1  | INFO  2023-05-30 23:31:26,136 [shard 0] seastar - Created fair group io-queue-0, capacity rate 2147483:2147483, limit 12582912, rate 16777216 (factor 1), threshold 2000
+redpanda-1  | INFO  2023-05-30 23:31:26,136 [shard 0] seastar - IO queue uses 0.75ms latency goal for device 0
+redpanda-1  | INFO  2023-05-30 23:31:26,136 [shard 0] seastar - Created io group dev(0), length limit 4194304:4194304, rate 2147483647:2147483647
+redpanda-1  | INFO  2023-05-30 23:31:26,136 [shard 0] seastar - Created io queue dev(0) capacities: 512:2000:2000 1024:3000:3000 2048:5000:5000 4096:9000:9000 8192:17000:17000 16384:33000:33000 32768:65000:65000 65536:129000:129000 131072:257000:257000
+redpanda-1  | INFO  2023-05-30 23:31:26,136 [shard 0] main - application.cc:347 - Redpanda v23.1.11 - 3cd52581e10097c2ed2c5bf11608692044a52b06
+redpanda-1  | INFO  2023-05-30 23:31:26,136 [shard 0] main - application.cc:355 - kernel=5.10.102.1-microsoft-standard-WSL2, nodename=da233bcc8d95, machine=x86_64
+redpanda-1  | INFO  2023-05-30 23:31:26,136 [shard 0] main - application.cc:283 - System resources: { cpus: 1, available memory: 1024.000MiB, reserved memory: 0.000bytes}
+redpanda-1  | INFO  2023-05-30 23:31:26,137 [shard 0] main - application.cc:291 - File handle limit: 1048576/1048576
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] cluster - config_manager.cc:370 - Ignoring value for 'auto_create_topics_enabled' in redpanda.yaml: use `rpk cluster config edit` to edit cluster configuration properties.
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] cluster - config_manager.cc:370 - Ignoring value for 'fetch_reads_debounce_timeout' in redpanda.yaml: use `rpk cluster config edit` to edit cluster configuration properties.
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] cluster - config_manager.cc:370 - Ignoring value for 'group_initial_rebalance_delay' in redpanda.yaml: use `rpk cluster config edit` to edit cluster configuration properties.
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] cluster - config_manager.cc:370 - Ignoring value for 'group_topic_partitions' in redpanda.yaml: use `rpk cluster config edit` to edit cluster configuration properties.
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] cluster - config_manager.cc:370 - Ignoring value for 'log_segment_size_min' in redpanda.yaml: use `rpk cluster config edit` to edit cluster configuration properties.
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] cluster - config_manager.cc:370 - Ignoring value for 'storage_min_free_bytes' in redpanda.yaml: use `rpk cluster config edit` to edit cluster configuration properties.
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] cluster - config_manager.cc:370 - Ignoring value for 'topic_partitions_per_shard' in redpanda.yaml: use `rpk cluster config edit` to edit cluster configuration properties.
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:658 - Cluster configuration properties:
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:659 - (use `rpk cluster config edit` to change)
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.abort_index_segment_size:50000	- Capacity (in number of txns) of an abort index segment
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.abort_timed_out_transactions_interval_ms:10000	- How often look for the inactive transactions and abort them
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.admin_api_require_auth:0	- Whether admin API clients must provide HTTP Basic authentication headers
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.aggregate_metrics:0	- Enable aggregations of metrics returned by the prometheus '/metrics' endpoint. Metric aggregation is performed by summing the values of samples by labels. Aggregations are performed where it makes sense by the shard and/or partition labels.
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.alter_topic_cfg_timeout_ms:5000	- Time to wait for entries replication in controller log when executing alter configuration requst
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.append_chunk_size:16384	- Size of direct write operations to disk in bytes
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.auto_create_topics_enabled:1	- Allow topic auto creation
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_access_key:{nullopt}	- AWS access key
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_api_endpoint:{nullopt}	- Optional API endpoint
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_api_endpoint_port:443	- TLS port override
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_azure_container:{nullopt}	- The name of the Azure container to use with Tiered Storage. Note that the container must belong to 'cloud_storage_azure_storage_account'
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_azure_shared_key:{nullopt}	- The shared key to be used for Azure Shared Key authentication with the configured Azure storage account (see 'cloud_storage_azure_storage_account)'. Note that Redpanda expects this string to be Base64 encoded.
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_azure_storage_account:{nullopt}	- The name of the Azure storage account to use with Tiered Storage
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_backend:unknown	- Optional cloud storage backend variant used to select API capabilities. If not supplied, will be inferred from other configuration parameters.
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_bucket:{nullopt}	- AWS bucket that should be used to store data
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_cache_check_interval:30000	- Timeout to check if cache eviction should be triggered
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_cache_size:21474836480	- Max size of archival cache
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_credentials_host:{nullopt}	- The hostname to connect to for retrieving role based credentials. Derived from cloud_storage_credentials_source if not set. Only required when using IAM role based access.
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_credentials_source:config_file	- The source of credentials to connect to cloud services
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_disable_tls:0	- Disable TLS for all S3 connections
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_enable_compacted_topic_reupload:1	- Enable re-uploading data for compacted topics
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_enable_remote_read:0	- Default remote read config value for new topics
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_enable_remote_write:0	- Default remote write value for new topics
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_enable_segment_merging:1	- Enables adjacent segment merging. The segments are reuploaded if there is an opportunity for that and if it will improve the tiered-storage performance
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_enabled:0	- Enable archival storage
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_graceful_transfer_timeout:{5000ms}	- Time limit on waiting for uploads to complete before a leadership transfer.  If this is null, leadership transfers will proceed without waiting.
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_housekeeping_interval_ms:300000	- Interval for cloud storage housekeeping tasks
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_idle_threshold_rps:1	- The cloud storage request rate threshold for idle state detection. If the average request rate for the configured period is lower than this threshold the cloud storage is considered being idle.
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_idle_timeout_ms:10000	- Timeout used to detect idle state of the cloud storage API. If the average cloud storage request rate is below this threshold for a configured amount of time the cloud storage is considered idle and the housekeeping jobs are started.
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_initial_backoff_ms:100	- Initial backoff time for exponetial backoff algorithm (ms)
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_manifest_upload_timeout_ms:10000	- Manifest upload timeout (ms)
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_max_connection_idle_time_ms:5000	- Max https connection idle time (ms)
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_max_connections:20	- Max number of simultaneous connections to S3 per shard (includes connections used for both uploads and downloads)
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_max_materialized_segments_per_shard:{nullopt}	- Maximum concurrent readers of remote data per CPU core.  If unset, value of `topic_partitions_per_shard` multiplied by 2 is used.
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_max_readers_per_shard:{nullopt}	- Maximum concurrent readers of remote data per CPU core.  If unset, value of `topic_partitions_per_shard` is used, i.e. one reader per partition if the shard is at its maximum partition capacity.
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_max_segments_pending_deletion_per_partition:5000	- The per-partition limit for the number of segments pending deletion from the cloud. Segments can be deleted due to retention or compaction. If this limit is breached and deletion fails, then segments will be orphaned in the cloud and will have to be removed manually
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_metadata_sync_timeout_ms:10000	- Timeout for SI metadata synchronization
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_readreplica_manifest_sync_timeout_ms:30000	- Timeout to check if new data is available for partition in S3 for read replica
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_reconciliation_interval_ms:	- 
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_recovery_temporary_retention_bytes_default:1073741824	- Retention in bytes for topics created during automated recovery
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_region:{nullopt}	- AWS region that houses the bucket used for storage
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_roles_operation_timeout_ms:30000	- Timeout for IAM role related operations (ms)
+redpanda-1  | INFO  2023-05-30 23:31:26,139 [shard 0] main - application.cc:634 - redpanda.cloud_storage_secret_key:{nullopt}	- AWS secret key
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.cloud_storage_segment_max_upload_interval_sec:{nullopt}	- Time that segment can be kept locally without uploading it to the remote storage (sec)
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.cloud_storage_segment_size_min:{nullopt}	- Smallest acceptable segment size in the cloud storage. Default: cloud_storage_segment_size_target/2
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.cloud_storage_segment_size_target:{nullopt}	- Desired segment size in the cloud storage. Default: segment.bytes
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.cloud_storage_segment_upload_timeout_ms:30000	- Log segment upload timeout (ms)
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.cloud_storage_trust_file:{nullopt}	- Path to certificate that should be used to validate server certificate during TLS handshake
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.cloud_storage_upload_ctrl_d_coeff:0	- derivative coefficient for upload PID controller.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.cloud_storage_upload_ctrl_max_shares:1000	- maximum number of IO and CPU shares that archival upload can use
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.cloud_storage_upload_ctrl_min_shares:100	- minimum number of IO and CPU shares that archival upload can use
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.cloud_storage_upload_ctrl_p_coeff:-2	- proportional coefficient for upload PID controller
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.cloud_storage_upload_ctrl_update_interval_ms:60000	- 
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.cloud_storage_upload_loop_initial_backoff_ms:100	- Initial backoff interval when there is nothing to upload for a partition (ms)
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.cloud_storage_upload_loop_max_backoff_ms:10000	- Max backoff interval when there is nothing to upload for a partition (ms)
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.cluster_id:{d53e74ff-e156-4dba-bd50-c39de3f2170a}	- Cluster identifier
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.compacted_log_segment_size:268435456	- How large in bytes should each compacted log segment be (default 256MiB)
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.compaction_ctrl_backlog_size:{nullopt}	- target backlog size for compaction controller. if not set compaction target compaction backlog would be equal to 
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.compaction_ctrl_d_coeff:0.2	- derivative coefficient for compaction PID controller.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.compaction_ctrl_i_coeff:0	- integral coefficient for compaction PID controller.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.compaction_ctrl_max_shares:1000	- maximum number of IO and CPU shares that compaction process can use
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.compaction_ctrl_min_shares:10	- minimum number of IO and CPU shares that compaction process can use
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.compaction_ctrl_p_coeff:-12.5	- proportional coefficient for compaction PID controller. This has to be negative since compaction backlog should decrease when number of compaction shares increases
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.compaction_ctrl_update_interval_ms:30000	- 
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.controller_backend_housekeeping_interval_ms:1000	- Interval between iterations of controller backend housekeeping loop
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.controller_log_accummulation_rps_capacity_acls_and_users_operations:{nullopt}	- Maximum capacity of rate limit accumulationin controller acls and users operations limit
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.controller_log_accummulation_rps_capacity_configuration_operations:{nullopt}	- Maximum capacity of rate limit accumulationin controller configuration operations limit
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.controller_log_accummulation_rps_capacity_move_operations:{nullopt}	- Maximum capacity of rate limit accumulationin controller move operations limit
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.controller_log_accummulation_rps_capacity_node_management_operations:{nullopt}	- Maximum capacity of rate limit accumulationin controller node management operations limit
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.controller_log_accummulation_rps_capacity_topic_operations:{nullopt}	- Maximum capacity of rate limit accumulationin controller topic operations limit
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.coproc_max_batch_size:32768	- Maximum amount of bytes to read from one topic read
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.coproc_max_inflight_bytes:10485760	- Maximum amountt of inflight bytes when sending data to wasm engine
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.coproc_max_ingest_bytes:655360	- Maximum amount of data to hold from input logs in memory
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.coproc_offset_flush_interval_ms:300000	- Interval for which all coprocessor offsets are flushed to disk
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.create_topic_timeout_ms:2000	- Timeout (ms) to wait for new topic creation
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.default_num_windows:10	- Default number of quota tracking windows
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.default_topic_partitions:1	- Default number of partitions per topic
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.default_topic_replications:1	- Default replication factor for new topics
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.default_window_sec:1000	- Default quota tracking window size in milliseconds
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.delete_retention_ms:604800000	- delete segments older than this - default 1 week
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.disable_batch_cache:0	- Disable batch cache in log manager
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.disable_metrics:0	- Disable registering metrics exposed on the internal metrics endpoint (/metrics)
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.disable_public_metrics:0	- Disable registering metrics exposed on the public metrics endpoint (/public_metrics)
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.election_timeout_ms:1500	- Election timeout expressed in milliseconds
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.enable_admin_api:	- 
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.enable_auto_rebalance_on_node_add:0	- Enable automatic partition rebalancing when new nodes are added
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.enable_controller_log_rate_limiting:0	- Enables limiting of controller log write rate
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.enable_coproc:0	- Enable coprocessing mode
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.enable_idempotence:1	- Enable idempotent producer
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.enable_leader_balancer:1	- Enable automatic leadership rebalancing
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.enable_metrics_reporter:1	- Enable cluster metrics reporter
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.enable_pid_file:1	- Enable pid file. You probably don't want to change this.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.enable_rack_awareness:0	- Enables rack-aware replica assignment
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.enable_sasl:0	- Enable SASL authentication for Kafka connections, authorization is required. see also `kafka_enable_authorization`
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.enable_transactions:1	- Enable transactions
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.enable_usage:0	- Enables the usage tracking mechanism, storing windowed history of kafka/cloud_storage metrics over time
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.features_auto_enable:1	- Whether new feature flags may auto-activate after upgrades (true) or must wait for manual activation via the admin API (false)
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.fetch_max_bytes:57671680	- Maximum number of bytes returned in fetch request
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.fetch_reads_debounce_timeout:10	- Time to wait for next read in fetch request when requested min bytes wasn't reached
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.fetch_session_eviction_timeout_ms:60000	- Minimum time before which unused session will get evicted from sessions. Maximum time after which inactive session will be deleted is two time given configuration valuecache
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.full_raft_configuration_recovery_pattern:{}	- Recover raft configuration on start for NTPs matching pattern
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.group_initial_rebalance_delay:0	- Extra delay (ms) added to rebalance phase to wait for new members
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.group_max_session_timeout_ms:300000	- The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. 
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.group_min_session_timeout_ms:6000	- The minimum allowed session timeout for registered consumers. Shorter timeouts result in quicker failure detection at the cost of more frequent consumer heartbeating, which can overwhelm broker resources.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.group_new_member_join_timeout:30000	- Timeout for new member joins
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.group_offset_retention_check_ms:600000	- How often the system should check for expired group offsets.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.group_offset_retention_sec:{604800s}	- Consumer group offset retention seconds. Offset retention can be disabled by setting this value to null.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.group_topic_partitions:3	- Number of partitions in the internal group membership topic
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.health_manager_tick_interval:180000	- How often the health manager runs
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.health_monitor_max_metadata_age:10000	- Max age of metadata cached in the health monitor of non controller node
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.health_monitor_tick_interval:10000	- How often health monitor refresh cluster state
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.id_allocator_batch_size:1000	- Id allocator allocates messages in batches (each batch is a one log record) and then serves requests from memory without touching the log until the batch is exhausted.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.id_allocator_log_capacity:100	- Capacity of the id_allocator log in number of messages. Once it reached id_allocator_stm should compact the log.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.id_allocator_replication:	- 
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.internal_topic_replication_factor:3	- Target replication factor for internal topics
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.join_retry_timeout_ms:5000	- Time between cluster join retries in milliseconds
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_admin_topic_api_rate:{nullopt}	- Target quota rate (partition mutations per default_window_sec)
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_batch_max_bytes:1048576	- Maximum size of a batch processed by server. If batch is compressed the limit applies to compressed batch size
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_client_group_byte_rate_quota:{}	- Per-group target produce quota byte rate (bytes per second). Client is considered part of the group if client_id contains clients_prefix
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_client_group_fetch_byte_rate_quota:{}	- Per-group target fetch quota byte rate (bytes per second). Client is considered part of the group if client_id contains clients_prefix
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_connection_rate_limit:{nullopt}	- Maximum connections per second for one core
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_connection_rate_limit_overrides:{}	- Overrides for specific ips for maximum connections per second for one core
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_connections_max:{nullopt}	- Maximum number of Kafka client connections per broker
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_connections_max_overrides:{}	- Per-IP overrides of kafka connection count limit, list of <ip>:<count> strings
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_connections_max_per_ip:{nullopt}	- Maximum number of Kafka client connections from each IP address, per broker
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_enable_authorization:{nullopt}	- Enable authorization for Kafka connections. Values:- `nil`: Ignored. Authorization is enabled with `enable_sasl: true`; `true`: authorization is required; `false`: authorization is disabled. See also: `enable_sasl` and `kafka_api[].authentication_method`
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_enable_partition_reassignment:1	- Enable the Kafka partition reassignment API
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_group_recovery_timeout_ms:30000	- Kafka group recovery timeout expressed in milliseconds
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_max_bytes_per_fetch:67108864	- Limit fetch responses to this many bytes, even if total of partition bytes limits is higher
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_mtls_principal_mapping_rules:{nullopt}	- Principal Mapping Rules for mTLS Authentication on the Kafka API
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_nodelete_topics:{__audit, __consumer_offsets, _schemas}	- Prevents the topics in the list from being deleted via the kafka api
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_noproduce_topics:{__audit}	- Prevents the topics in the list from having message produced to them via the kafka api
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_qdc_depth_alpha:0.8	- Smoothing factor for kafka queue depth control depth tracking.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_qdc_depth_update_ms:7000	- Update frequency for kafka queue depth control.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_qdc_enable:0	- Enable kafka queue depth control.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_qdc_idle_depth:10	- Queue depth when idleness is detected in kafka queue depth control.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_qdc_latency_alpha:0.002	- Smoothing parameter for kafka queue depth control latency tracking.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_qdc_max_depth:100	- Maximum queue depth used in kafka queue depth control.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_qdc_max_latency_ms:80	- Max latency threshold for kafka queue depth control depth tracking.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_qdc_min_depth:1	- Minimum queue depth used in kafka queue depth control.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_qdc_window_count:12	- Number of windows used in kafka queue depth control latency tracking.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_qdc_window_size_ms:1500	- Window size for kafka queue depth control latency tracking.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_quota_balancer_min_shard_throughput_bps:256	- The lowest value of the throughput quota a shard can get in the process of quota balancing, in bytes/s. 0 means there is no minimum.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_quota_balancer_min_shard_throughput_ratio:0.01	- The lowest value of the throughput quota a shard can get in the process of quota balancing, expressed as a ratio of default shard quota. 0 means there is no minimum, 1 means no quota can be taken away by the balancer.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_quota_balancer_node_period_ms:750	- Intra-node throughput quota balancer invocation period, in milliseconds. Value of 0 disables the balancer and makes all the throughput quotas immutable.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_quota_balancer_window_ms:5000	- Time window used to average current throughput measurement for quota balancer, in milliseconds
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_request_max_bytes:104857600	- Maximum size of a single request processed via Kafka API
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_rpc_server_stream_recv_buf:{nullopt}	- Userspace receive buffer max size in bytes
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_rpc_server_tcp_recv_buf:{nullopt}	- Kafka server TCP receive buffer size in bytes.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_rpc_server_tcp_send_buf:{nullopt}	- Kafka server TCP transmit buffer size in bytes.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_throughput_controlled_api_keys:{produce, fetch}	- List of Kafka API keys that are subject to cluster-wide and node-wide thoughput limit control
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_throughput_limit_node_in_bps:{nullopt}	- Node wide throughput ingress limit - maximum kafka traffic throughput allowed on the ingress side of each node, in bytes/s. Default is no limit.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_throughput_limit_node_out_bps:{nullopt}	- Node wide throughput egress limit - maximum kafka traffic throughput allowed on the egress side of each node, in bytes/s. Default is no limit.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kvstore_flush_interval:10	- Key-value store flush interval (ms)
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kvstore_max_segment_size:16777216	- Key-value maximum segment size (bytes)
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.leader_balancer_idle_timeout:120000	- Leadership rebalancing idle timeout
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.leader_balancer_mode:greedy_balanced_shards	- Leader balancer mode
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.leader_balancer_mute_timeout:300000	- Leadership rebalancing mute timeout
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.leader_balancer_transfer_limit_per_shard:512	- Per shard limit for in progress leadership transfers
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.legacy_group_offset_retention_enabled:0	- Group offset retention is enabled by default in versions of Redpanda >= 23.1. To enable offset retention after upgrading from an older version set this option to true.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.log_cleanup_policy:delete	- Default topic cleanup policy
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.log_compaction_interval_ms:10000	- How often do we trigger background compaction
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.log_compression_type:producer	- Default topic compression type
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.log_message_timestamp_type:CreateTime	- Default topic messages timestamp type
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.log_segment_ms:{1209600000ms}	- Default log segment lifetime in ms for topics which do not set segment.ms
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.log_segment_ms_max:31536000000	- Upper bound on topic segment.ms: higher values will be clamped to this value
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.log_segment_ms_min:60000	- Lower bound on topic segment.ms: lower values will be clamped to this value
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.log_segment_size:134217728	- Default log segment size in bytes for topics which do not set segment.bytes
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.log_segment_size_jitter_percent:5	- Random variation to the segment size limit used for each partition
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.log_segment_size_max:{nullopt}	- Upper bound on topic segment.bytes: higher values will be clamped to this limit
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.log_segment_size_min:{1}	- Lower bound on topic segment.bytes: lower values will be clamped to this limit
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.max_compacted_log_segment_size:5368709120	- Max compacted segment size after consolidation
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.max_concurrent_producer_ids:18446744073709551615	- Max cache size for pids which rm_stm stores inside internal state. In overflow rm_stm will delete old pids and clear their status
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.max_kafka_throttle_delay_ms:30000	- Fail-safe maximum throttle delay on kafka requests
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.max_version:	- 
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.members_backend_retry_ms:5000	- Time between members backend reconciliation loop retries 
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.memory_abort_on_alloc_failure:1	- If true, the redpanda process will terminate immediately when an allocation cannot be satisfied due to memory exhasution. If false, an exception is thrown instead.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.metadata_dissemination_interval_ms:3000	- Interaval for metadata dissemination batching
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.metadata_dissemination_retries:30	- Number of attempts of looking up a topic's meta data like shard before failing a request
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.metadata_dissemination_retry_delay_ms:320	- Delay before retry a topic lookup in a shard or other meta tables
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.metadata_status_wait_timeout_ms:2000	- Maximum time to wait in metadata request for cluster health to be refreshed
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.metrics_reporter_report_interval:86400000	- cluster metrics reporter report interval
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.metrics_reporter_tick_interval:60000	- Cluster metrics reporter tick interval
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.metrics_reporter_url:https://m.rp.vectorized.io/v2	- cluster metrics reporter url
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.min_version:	- 
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.node_isolation_heartbeat_timeout:3000	- How long after the last heartbeat request a node will wait before considering itself to be isolated
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.node_management_operation_timeout_ms:5000	- Timeout for executing node management operations
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.node_status_interval:100	- Time interval between two node status messages. Node status messages establish liveness status outside of the Raft protocol.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.partition_autobalancing_concurrent_moves:50	- Number of partitions that can be reassigned at once
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.partition_autobalancing_max_disk_usage_percent:80	- Disk usage threshold that triggers moving partitions from the node
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.partition_autobalancing_mode:node_add	- Partition autobalancing mode
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.partition_autobalancing_movement_batch_size_bytes:5368709120	- Total size of partitions that autobalancer is going to move in one batch
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.partition_autobalancing_node_availability_timeout_sec:900000	- Node unavailability timeout that triggers moving partitions from the node
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.partition_autobalancing_tick_interval_ms:30000	- Partition autobalancer tick interval
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.quota_manager_gc_sec:30000	- Quota manager GC frequency in milliseconds
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.raft_heartbeat_disconnect_failures:3	- After how many failed heartbeats to forcibly close an unresponsive TCP connection.  Set to 0 to disable force disconnection.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.raft_heartbeat_interval_ms:150	- Milliseconds for raft leader heartbeats
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.raft_heartbeat_timeout_ms:3000	- raft heartbeat RPC timeout
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.raft_io_timeout_ms:10000	- Raft I/O timeout
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.raft_learner_recovery_rate:104857600	- Raft learner recovery rate limit in bytes per sec
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.raft_max_concurrent_append_requests_per_follower:16	- Maximum number of concurrent append entries requests sent by leader to one follower
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.raft_max_recovery_memory:{nullopt}	- Max memory that can be used for reads in raft recovery process by default 15% of total memory
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.raft_recovery_default_read_size:524288	- default size of read issued during raft follower recovery
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.raft_recovery_throttle_disable_dynamic_mode:0	- Disables dynamic rate allocation in recovery throttle (advanced).
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.raft_replicate_batch_window_size:1048576	- Max size of requests cached for replication
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.raft_smp_max_non_local_requests:{nullopt}	- Maximum number of x-core requests pending in Raft seastar::smp group. (for more details look at `seastar::smp_service_group` documentation)
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.raft_timeout_now_timeout_ms:1000	- Timeout for a timeout now request
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.raft_transfer_leader_recovery_timeout_ms:10000	- Timeout waiting for follower recovery when transferring leadership
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.readers_cache_eviction_timeout_ms:30000	- Duration after which inactive readers will be evicted from cache
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.reclaim_batch_cache_min_free:67108864	- Free memory limit that will be kept by batch cache background reclaimer
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.reclaim_growth_window:3000	- Length of time in which reclaim sizes grow
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.reclaim_max_size:4194304	- Maximum batch cache reclaim size
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.reclaim_min_size:131072	- Minimum batch cache reclaim size
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.reclaim_stable_window:10000	- Length of time above which growth is reset
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.recovery_append_timeout_ms:5000	- Timeout for append entries requests issued while updating stale follower
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.release_cache_on_segment_roll:0	- Free cache when segments roll
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.replicate_append_timeout_ms:3000	- Timeout for append entries requests issued while replicating entries
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.retention_bytes:{nullopt}	- Default max bytes per partition on disk before triggering a compaction
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.retention_local_target_bytes_default:{nullopt}	- Local retention size target for partitions of topics with cloud storage write enabled
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.retention_local_target_ms_default:86400000	- Local retention time target for partitions of topics with cloud storage write enabled
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.rm_sync_timeout_ms:10000	- Time to wait state catch up before rejecting a request
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.rm_violation_recovery_policy:	- 
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.rpc_server_listen_backlog:{nullopt}	- TCP connection queue length for Kafka server and internal RPC server
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.rpc_server_tcp_recv_buf:{nullopt}	- Internal RPC TCP receive buffer size in bytes.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.rpc_server_tcp_send_buf:{nullopt}	- Internal RPC TCP transmit buffer size in bytes.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.rps_limit_acls_and_users_operations:1000	- Rate limit for controller acls and users operations
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.rps_limit_configuration_operations:1000	- Rate limit for controller configuration operations
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.rps_limit_move_operations:1000	- Rate limit for controller move operations
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.rps_limit_node_management_operations:1000	- Rate limit for controller node management operations
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.rps_limit_topic_operations:1000	- Rate limit for controller topic operations
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.sasl_kerberos_config:/etc/krb5.conf	- The location of the Kerberos krb5.conf file for Redpanda
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.sasl_kerberos_keytab:/var/lib/redpanda/redpanda.keytab	- The location of the Kerberos keytab file for Redpanda
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.sasl_kerberos_principal:redpanda	- The primary of the Kerberos Service Principal Name (SPN) for Redpanda
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.sasl_kerberos_principal_mapping:{DEFAULT}	- Rules for mapping Kerberos Principal Names to Redpanda User Principals
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.sasl_mechanisms:{SCRAM}	- A list of supported SASL mechanisms. `SCRAM` and `GSSAPI` are allowed.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.seed_server_meta_topic_partitions:	- 
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.segment_appender_flush_timeout_ms:1000	- Maximum delay until buffered data is written
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.segment_fallocation_step:33554432	- Size for segments fallocation
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.seq_table_min_size:1000	- Minimum size of the seq table non affected by compaction
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.storage_compaction_index_memory:134217728	- Maximum number of bytes that may be used on each shard by compactionindex writers
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.storage_ignore_timestamps_in_future_sec:{nullopt}	- If set, timestamps more than this many seconds in the future relative tothe server's clock will be ignored for data retention purposes, and retention will act based on another timestamp in the same segment, or the mtime of the segment file if no valid timestamp is available
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.storage_max_concurrent_replay:1024	- Maximum number of partitions' logs that will be replayed concurrently at startup, or flushed concurrently on shutdown.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.storage_min_free_bytes:10485760	- Threshold of minimum bytes free space before rejecting producers.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.storage_read_buffer_size:131072	- Size of each read buffer (one per in-flight read, per log segment)
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.storage_read_readahead_count:10	- How many additional reads to issue ahead of current read location
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.storage_space_alert_free_threshold_bytes:0	- Threshold of minimim bytes free space before setting storage space alert
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.storage_space_alert_free_threshold_percent:5	- Threshold of minimim percent free space before setting storage space alert
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.storage_strict_data_init:0	- Requires that an empty file named `.redpanda_data_dir` be present in the data directory. Redpanda will refuse to start if it is not found.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.storage_target_replay_bytes:10737418240	- Target bytes to replay from disk on startup after clean shutdown: controls frequency of snapshots and checkpoints
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.superusers:{}	- List of superuser usernames
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.target_fetch_quota_byte_rate:{nullopt}	- Target fetch size quota byte rate (bytes per second) - disabled default
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.target_quota_byte_rate:2147483648	- Target request size quota byte rate (bytes per second) - 2GB default
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.tm_sync_timeout_ms:10000	- Time to wait state catch up before rejecting a request
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.tm_violation_recovery_policy:	- 
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.topic_fds_per_partition:{5}	- Required file handles per partition when creating topics
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.topic_memory_per_partition:{1048576}	- Required memory per partition when creating topics
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.topic_partitions_per_shard:1000	- Maximum number of partitions which may be allocated to one shard (CPU core)
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.topic_partitions_reserve_shard0:2	- Reserved partition slots on shard (CPU core) 0 on each node.  If this is >= topic_partitions_per_core, no data partitions will be scheduled on shard 0
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.transaction_coordinator_cleanup_policy:delete	- Cleanup policy for a transaction coordinator topic
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.transaction_coordinator_delete_retention_ms:604800000	- delete segments older than this - default 1 week
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.transaction_coordinator_log_segment_size:1073741824	- How large in bytes should each log segment be (default 1G)
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.transaction_coordinator_replication:	- 
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.transactional_id_expiration_ms:604800000	- Producer ids are expired once this time has elapsed after the last write with the given producer id.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.tx_log_stats_interval_s:10000	- How often to log per partition tx stats, works only with debug logging enabled.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.tx_timeout_delay_ms:1000	- Delay before scheduling next check for timed out transactions
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.usage_disk_persistance_interval_sec:300000	- The interval in which all usage stats are written to disk
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.usage_num_windows:24	- The number of windows to persist in memory and disk
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.usage_window_width_interval_sec:3600000	- The width of a usage window, tracking cloud and kafka ingress/egress traffic each interval
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.use_fetch_scheduler_group:1	- Use a separate scheduler group for fetch processing
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.use_scheduling_groups:	- 
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.wait_for_leader_timeout_ms:5000	- Timeout (ms) to wait for leadership in metadata cache
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.zstd_decompress_workspace_bytes:8388608	- Size of the zstd decompression workspace
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:662 - Node configuration properties:
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:663 - (use `rpk redpanda config set <cfg> <value>` to change)
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.admin:{{:{host: 0.0.0.0, port: 9644}}}	- Address and port of admin server
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.admin_api_doc_dir:/usr/share/redpanda/admin-api-doc	- Admin API doc directory
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.admin_api_tls:{}	- TLS configuration for admin HTTP server
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.advertised_kafka_api:{{INSIDE:{host: redpanda-1, port: 29092}}, {OUTSIDE:{host: localhost, port: 9092}}}	- Address of Kafka API published to the clients
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.advertised_rpc_api:{{host: redpanda-1, port: 33145}}	- Address of RPC endpoint published to other cluster members
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.cloud_storage_cache_directory:{nullopt}	- Directory for archival cache. Should be present when `cloud_storage_enabled` is present
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.coproc_supervisor_server:{host: 127.0.0.1, port: 43189}	- IpAddress and port for supervisor service
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.crash_loop_limit:{nullopt}	- Maximum consecutive crashes (unclean shutdowns) allowed after which operator intervention is needed to startup the broker.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.dashboard_dir:	- 
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.data_directory:{data_directory="/var/lib/redpanda/data"}	- Place where redpanda will keep the data
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.developer_mode:1	- Skips most of the checks performed at startup, not recomended for production use
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.empty_seed_starts_cluster:1	- If true, an empty seed_servers list will denote that this node should form a cluster. At most one node in the cluster should be configured configured with an empty seed_servers list. If no such configured node exists, or if configured to false, all nodes denoted by the seed_servers list must be identical among those nodes' configurations, and those nodes will form the initial cluster.
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.enable_central_config:	- 
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_api:{{INSIDE:{host: 0.0.0.0, port: 29092}:{nullopt}}, {OUTSIDE:{host: 0.0.0.0, port: 9092}:{nullopt}}}	- Address and port of an interface to listen for Kafka API requests
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.kafka_api_tls:{}	- TLS configuration for Kafka API endpoint
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.node_id:{0}	- Unique id identifying a node in the cluster. If missing, a unique id will be assigned for this node when it joins the cluster
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.rack:{nullopt}	- Rack identifier
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.rpc_server:{host: 0.0.0.0, port: 33145}	- IpAddress and port for RPC server
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.rpc_server_tls:{ enabled: 0 key/cert files: {nullopt} ca file: {nullopt} client_auth_required: 0 }	- TLS configuration for RPC server
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - redpanda.seed_servers:{}	- List of the seed servers used to join current cluster. If the seed_server list is empty the node will be a cluster root and it will form a new cluster
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - pandaproxy.advertised_pandaproxy_api:{{INSIDE:{host: redpanda-1, port: 28082}}, {OUTSIDE:{host: localhost, port: 8082}}}	- Rest API address and port to publish to client
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - pandaproxy.api_doc_dir:/usr/share/redpanda/proxy-api-doc	- API doc directory
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - pandaproxy.client_cache_max_size:10	- The maximum number of kafka clients in the LRU cache
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - pandaproxy.client_keep_alive:300000	- Time in milliseconds that an idle connection may remain open
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - pandaproxy.consumer_instance_timeout_ms:300000	- How long to wait for an idle consumer before removing it
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - pandaproxy.pandaproxy_api:{{INSIDE:{host: 0.0.0.0, port: 28082}:<nullopt>}, {OUTSIDE:{host: 0.0.0.0, port: 8082}:<nullopt>}}	- Rest API listen address and port
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - pandaproxy.pandaproxy_api_tls:{}	- TLS configuration for Pandaproxy api
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - pandaproxy_client.broker_tls:{ enabled: 0 key/cert files: {nullopt} ca file: {nullopt} client_auth_required: 0 }	- TLS configuration for the brokers
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - pandaproxy_client.brokers:{{host: 0.0.0.0, port: 29092}}	- List of address and port of the brokers
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - pandaproxy_client.client_identifier:{pandaproxy_client}	- Identifier to use within the kafka request header
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - pandaproxy_client.consumer_heartbeat_interval_ms:500	- Interval (in milliseconds) for consumer heartbeats
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - pandaproxy_client.consumer_rebalance_timeout_ms:2000	- Timeout (in milliseconds) for consumer rebalance
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - pandaproxy_client.consumer_request_max_bytes:1048576	- Max bytes to fetch per request
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - pandaproxy_client.consumer_request_timeout_ms:100	- Interval (in milliseconds) for consumer request timeout
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - pandaproxy_client.consumer_session_timeout_ms:300000	- Timeout (in milliseconds) for consumer session
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - pandaproxy_client.produce_batch_delay_ms:100	- Delay (in milliseconds) to wait before sending batch
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - pandaproxy_client.produce_batch_record_count:1000	- Number of records to batch before sending to broker
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - pandaproxy_client.produce_batch_size_bytes:1048576	- Number of bytes to batch before sending to broker
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - pandaproxy_client.retries:5	- Number of times to retry a request to a broker
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - pandaproxy_client.retry_base_backoff_ms:100	- Delay (in milliseconds) for initial retry backoff
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - pandaproxy_client.sasl_mechanism:	- The SASL mechanism to use when connecting
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - pandaproxy_client.scram_password:	- Password to use for SCRAM authentication mechanisms
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - pandaproxy_client.scram_username:	- Username to use for SCRAM authentication mechanisms
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - schema_registry.api_doc_dir:/usr/share/redpanda/proxy-api-doc	- API doc directory
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - schema_registry.schema_registry_api:{{:{host: 0.0.0.0, port: 8081}:<nullopt>}}	- Schema Registry API listen address and port
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - schema_registry.schema_registry_api_tls:{}	- TLS configuration for Schema Registry API
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - schema_registry.schema_registry_replication_factor:{nullopt}	- Replication factor for internal _schemas topic.  If unset, defaults to `default_topic_replication`
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - schema_registry_client.broker_tls:{ enabled: 0 key/cert files: {nullopt} ca file: {nullopt} client_auth_required: 0 }	- TLS configuration for the brokers
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - schema_registry_client.brokers:{{host: 0.0.0.0, port: 29092}}	- List of address and port of the brokers
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - schema_registry_client.client_identifier:{schema_registry_client}	- Identifier to use within the kafka request header
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - schema_registry_client.consumer_heartbeat_interval_ms:500	- Interval (in milliseconds) for consumer heartbeats
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - schema_registry_client.consumer_rebalance_timeout_ms:2000	- Timeout (in milliseconds) for consumer rebalance
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - schema_registry_client.consumer_request_max_bytes:1048576	- Max bytes to fetch per request
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - schema_registry_client.consumer_request_timeout_ms:100	- Interval (in milliseconds) for consumer request timeout
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - schema_registry_client.consumer_session_timeout_ms:10000	- Timeout (in milliseconds) for consumer session
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - schema_registry_client.produce_batch_delay_ms:0	- Delay (in milliseconds) to wait before sending batch
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - schema_registry_client.produce_batch_record_count:0	- Number of records to batch before sending to broker
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - schema_registry_client.produce_batch_size_bytes:0	- Number of bytes to batch before sending to broker
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - schema_registry_client.retries:5	- Number of times to retry a request to a broker
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - schema_registry_client.retry_base_backoff_ms:100	- Delay (in milliseconds) for initial retry backoff
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - schema_registry_client.sasl_mechanism:	- The SASL mechanism to use when connecting
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - schema_registry_client.scram_password:	- Password to use for SCRAM authentication mechanisms
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:634 - schema_registry_client.scram_username:	- Username to use for SCRAM authentication mechanisms
+redpanda-1  | INFO  2023-05-30 23:31:26,140 [shard 0] main - application.cc:414 - Setting abort_on_allocation_failure (abort on OOM): true
+redpanda-1  | INFO  2023-05-30 23:31:26,141 [shard 0] syschecks - Writing pid file "/var/lib/redpanda/data/pid.lock"
+redpanda-1  | INFO  2023-05-30 23:31:26,142 [shard 0] storage - directories.h:33 - Checking `/var/lib/redpanda/data` for supported filesystems
+redpanda-1  | ERROR 2023-05-30 23:31:26,143 [shard 0] syschecks - Path: `/var/lib/redpanda/data' is not on XFS. This is a non-supported setup. Expect poor performance.
+redpanda-1  | INFO  2023-05-30 23:31:26,173 [shard 0] storage - segment_set.cc:308 - Recovered: {offset_tracker:{term:0, base_offset:62, committed_offset:69, dirty_offset:69}, compacted_segment=0, finished_self_compaction=0, generation={1}, reader={/var/lib/redpanda/data/redpanda/kvstore/0_0/62-0-v1.log, (3455 bytes)}, writer=nullptr, cache=nullptr, compaction_index:nullopt, closed=0, tombstone=0, index={file:/var/lib/redpanda/data/redpanda/kvstore/0_0/62-0-v1.base_index, offsets:{62}, index:{header_bitflags:0, base_offset:{62}, max_offset:{69}, base_timestamp:{timestamp: 1685489369714}, max_timestamp:{timestamp: 1685489480161}, batch_timestamps_are_monotonic:1, index(1,1,1)}, step:32768, needs_persistence:0}}
+redpanda-1  | INFO  2023-05-30 23:31:26,173 [shard 0] kvstore - kvstore.cc:514 - Replaying segment with base offset 62
+redpanda-1  | INFO  2023-05-30 23:31:26,174 [shard 0] kvstore - kvstore.cc:543 - Removing old segment with base offset 54
+redpanda-1  | INFO  2023-05-30 23:31:26,176 [shard 0] main - application.cc:1732 - Loaded stored node ID for node: 0
+redpanda-1  | INFO  2023-05-30 23:31:26,176 [shard 0] main - application.cc:1759 - Loaded existing UUID for node: {edb75f50-3375-442f-937f-26ac5d291660}
+redpanda-1  | INFO  2023-05-30 23:31:26,176 [shard 0] main - application.cc:1792 - Started RPC server listening at {host: 0.0.0.0, port: 33145}
+redpanda-1  | INFO  2023-05-30 23:31:26,177 [shard 0] cluster - cluster_discovery.cc:99 - Controller directory /var/lib/redpanda/data/redpanda/controller/0_0 not empty; assuming existing cluster exists
+redpanda-1  | INFO  2023-05-30 23:31:26,177 [shard 0] main - application.cc:1819 - Starting Redpanda with node_id 0, cluster UUID {{08701516-c3f4-4d92-acd9-b0ca740d96ed}}
+redpanda-1  | INFO  2023-05-30 23:31:26,177 [shard 0] raft - coordinated_recovery_throttle.cc:113 - Starting recovery throttle, rate: 104857600
+redpanda-1  | INFO  2023-05-30 23:31:26,177 [shard 0] main - application.cc:1139 - Partition manager started
+redpanda-1  | INFO  2023-05-30 23:31:26,183 [shard 0] raft - [group_id:0, {redpanda/controller/0}] consensus.cc:1193 - Starting
+redpanda-1  | INFO  2023-05-30 23:31:26,183 [shard 0] raft - [group_id:0, {redpanda/controller/0}] consensus.cc:1485 - Recovered persistent state from kvstore: voted for: {id: {0}, revision: {0}}, term: 6
+redpanda-1  | INFO  2023-05-30 23:31:26,183 [shard 0] raft - [group_id:0, {redpanda/controller/0}] consensus.cc:1227 - Starting with voted_for {id: {0}, revision: {0}} term 6 initial_state false
+redpanda-1  | INFO  2023-05-30 23:31:26,183 [shard 0] raft - [group_id:0, {redpanda/controller/0}] consensus.cc:1273 - Read bootstrap state: data_seen 0 config_seen 0 eol false commit 0 term 0 prev_idx 0 prev_term 0 config_tracker -9223372036854775808 commit_base_tracker -9223372036854775808 configurations {}
+redpanda-1  | INFO  2023-05-30 23:31:26,183 [shard 0] raft - [group_id:0, {redpanda/controller/0}] consensus.cc:1274 - Current log offsets: {start_offset:0, committed_offset:14, committed_offset_term:6, dirty_offset:14, dirty_offset_term:6, last_term_start_offset:14}
+redpanda-1  | INFO  2023-05-30 23:31:26,183 [shard 0] raft - [group_id:0, {redpanda/controller/0}] consensus.cc:1298 - Truncating configurations at 14
+redpanda-1  | INFO  2023-05-30 23:31:26,193 [shard 0] storage - segment.cc:673 - Creating new segment /var/lib/redpanda/data/redpanda/kvstore/0_0/70-0-v1.log
+redpanda-1  | INFO  2023-05-30 23:31:26,206 [shard 0] raft - [group_id:0, {redpanda/controller/0}] consensus.cc:1398 - started raft, log offsets: {start_offset:0, committed_offset:14, committed_offset_term:6, dirty_offset:14, dirty_offset_term:6, last_term_start_offset:14}, term: 6, configuration: {current: {voters: {{id: {0}, revision: {0}}}, learners: {}}, old:{nullopt}, revision: 0, update: {nullopt}, version: 4, brokers: {{id: 0, kafka_advertised_listeners: {{INSIDE:{host: redpanda-1, port: 29092}}, {OUTSIDE:{host: localhost, port: 9092}}}, rpc_address: {host: redpanda-1, port: 33145}, rack: {nullopt}, properties: {cores 1, mem_available 1, disk_available 250}}}}
+redpanda-1  | INFO  2023-05-30 23:31:26,206 [shard 0] cluster - drain_manager.cc:21 - Drain manager starting
+redpanda-1  | INFO  2023-05-30 23:31:26,206 [shard 0] cluster - members_manager.cc:88 - starting cluster::members_manager...
+redpanda-1  | INFO  2023-05-30 23:31:26,206 [shard 0] cluster - controller.cc:354 - Controller log replay starting (to offset 14)
+redpanda-1  | INFO  2023-05-30 23:31:26,207 [shard 0] cluster - bootstrap_backend.cc:88 - Applying update to bootstrap_manager
+redpanda-2  | 
+redpanda-2  | 
+redpanda-2  | Welcome to the Redpanda community!
+redpanda-2  | 
+redpanda-2  | Documentation: https://docs.redpanda.com - Product documentation site
+redpanda-2  | GitHub Discussion: https://github.com/redpanda-data/redpanda/discussions - Longer, more involved discussions
+redpanda-2  | GitHub Issues: https://github.com/redpanda-data/redpanda/issues - Report and track issues with the codebase
+redpanda-2  | Support: https://support.redpanda.com - Contact the support team privately
+redpanda-2  | Product Feedback: https://redpanda.com/feedback - Let us know how we can improve your experience
+redpanda-2  | Slack: https://redpanda.com/slack - Chat about all things Redpanda. Join the conversation!
+redpanda-2  | Twitter: https://twitter.com/redpandadata - All the latest Redpanda news!
+redpanda-2  | 
+redpanda-2  | 
+redpanda-1  | INFO  2023-05-30 23:31:26,220 [shard 0] cluster - controller.cc:366 - Controller log replay complete.
+redpanda-1  | INFO  2023-05-30 23:31:26,220 [shard 0] cluster - controller.cc:645 - Member of cluster UUID {08701516-c3f4-4d92-acd9-b0ca740d96ed}
+redpanda-1  | INFO  2023-05-30 23:31:26,220 [shard 0] cluster - feature_manager.cc:80 - Starting...
+redpanda-1  | WARN  2023-05-30 23:31:26,221 [shard 0] admin_api_server - admin_server.cc:389 - Insecure Admin API listener on 0.0.0.0:9644, consider enabling `admin_api_require_auth`
+redpanda-1  | INFO  2023-05-30 23:31:26,221 [shard 0] admin_api_server - admin_server.cc:177 - Started HTTP admin service listening at {{:{host: 0.0.0.0, port: 9644}}}
+redpanda-1  | INFO  2023-05-30 23:31:26,221 [shard 0] main - application.cc:1855 - Started Pandaproxy listening at {{INSIDE:{host: 0.0.0.0, port: 28082}:<nullopt>}, {OUTSIDE:{host: 0.0.0.0, port: 8082}:<nullopt>}}
+redpanda-1  | INFO  2023-05-30 23:31:26,222 [shard 0] main - application.cc:1863 - Started Schema Registry listening at {{:{host: 0.0.0.0, port: 8081}:<nullopt>}}
+redpanda-1  | INFO  2023-05-30 23:31:26,222 [shard 0] main - application.cc:2079 - Waiting for cluster membership
+redpanda-1  | INFO  2023-05-30 23:31:26,222 [shard 0] main - application.cc:2088 - Started Kafka API server listening at {{INSIDE:{host: 0.0.0.0, port: 29092}:{nullopt}}, {OUTSIDE:{host: 0.0.0.0, port: 9092}:{nullopt}}}
+redpanda-2  | WARN  2023-05-30 23:31:26,222 [shard 0] seastar - Creation of perf_event based stall detector failed, falling back to posix timer: std::__1::system_error (error system:1, perf_event_open() failed: Operation not permitted)
+redpanda-1  | INFO  2023-05-30 23:31:26,222 [shard 0] main - application.cc:1870 - Successfully started Redpanda!
+redpanda-2  | INFO  2023-05-30 23:31:26,223 [shard 0] seastar - Created fair group io-queue-0, capacity rate 2147483:2147483, limit 12582912, rate 16777216 (factor 1), threshold 2000
+redpanda-2  | INFO  2023-05-30 23:31:26,223 [shard 0] seastar - IO queue uses 0.75ms latency goal for device 0
+redpanda-2  | INFO  2023-05-30 23:31:26,223 [shard 0] seastar - Created io group dev(0), length limit 4194304:4194304, rate 2147483647:2147483647
+redpanda-2  | INFO  2023-05-30 23:31:26,223 [shard 0] seastar - Created io queue dev(0) capacities: 512:2000:2000 1024:3000:3000 2048:5000:5000 4096:9000:9000 8192:17000:17000 16384:33000:33000 32768:65000:65000 65536:129000:129000 131072:257000:257000
+redpanda-2  | INFO  2023-05-30 23:31:26,224 [shard 0] main - application.cc:347 - Redpanda v23.1.11 - 3cd52581e10097c2ed2c5bf11608692044a52b06
+redpanda-2  | INFO  2023-05-30 23:31:26,224 [shard 0] main - application.cc:355 - kernel=5.10.102.1-microsoft-standard-WSL2, nodename=4921fc405d33, machine=x86_64
+redpanda-2  | INFO  2023-05-30 23:31:26,224 [shard 0] main - application.cc:283 - System resources: { cpus: 1, available memory: 1024.000MiB, reserved memory: 0.000bytes}
+redpanda-2  | INFO  2023-05-30 23:31:26,224 [shard 0] main - application.cc:291 - File handle limit: 1048576/1048576
+redpanda-2  | INFO  2023-05-30 23:31:26,225 [shard 0] cluster - config_manager.cc:370 - Ignoring value for 'auto_create_topics_enabled' in redpanda.yaml: use `rpk cluster config edit` to edit cluster configuration properties.
+redpanda-2  | INFO  2023-05-30 23:31:26,225 [shard 0] cluster - config_manager.cc:370 - Ignoring value for 'fetch_reads_debounce_timeout' in redpanda.yaml: use `rpk cluster config edit` to edit cluster configuration properties.
+redpanda-2  | INFO  2023-05-30 23:31:26,225 [shard 0] cluster - config_manager.cc:370 - Ignoring value for 'group_initial_rebalance_delay' in redpanda.yaml: use `rpk cluster config edit` to edit cluster configuration properties.
+redpanda-2  | INFO  2023-05-30 23:31:26,225 [shard 0] cluster - config_manager.cc:370 - Ignoring value for 'group_topic_partitions' in redpanda.yaml: use `rpk cluster config edit` to edit cluster configuration properties.
+redpanda-2  | INFO  2023-05-30 23:31:26,225 [shard 0] cluster - config_manager.cc:370 - Ignoring value for 'log_segment_size_min' in redpanda.yaml: use `rpk cluster config edit` to edit cluster configuration properties.
+redpanda-2  | INFO  2023-05-30 23:31:26,225 [shard 0] cluster - config_manager.cc:370 - Ignoring value for 'storage_min_free_bytes' in redpanda.yaml: use `rpk cluster config edit` to edit cluster configuration properties.
+redpanda-2  | INFO  2023-05-30 23:31:26,225 [shard 0] cluster - config_manager.cc:370 - Ignoring value for 'topic_partitions_per_shard' in redpanda.yaml: use `rpk cluster config edit` to edit cluster configuration properties.
+redpanda-2  | INFO  2023-05-30 23:31:26,225 [shard 0] main - application.cc:658 - Cluster configuration properties:
+redpanda-2  | INFO  2023-05-30 23:31:26,225 [shard 0] main - application.cc:659 - (use `rpk cluster config edit` to change)
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.abort_index_segment_size:50000	- Capacity (in number of txns) of an abort index segment
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.abort_timed_out_transactions_interval_ms:10000	- How often look for the inactive transactions and abort them
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.admin_api_require_auth:0	- Whether admin API clients must provide HTTP Basic authentication headers
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.aggregate_metrics:0	- Enable aggregations of metrics returned by the prometheus '/metrics' endpoint. Metric aggregation is performed by summing the values of samples by labels. Aggregations are performed where it makes sense by the shard and/or partition labels.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.alter_topic_cfg_timeout_ms:5000	- Time to wait for entries replication in controller log when executing alter configuration requst
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.append_chunk_size:16384	- Size of direct write operations to disk in bytes
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.auto_create_topics_enabled:1	- Allow topic auto creation
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_access_key:{nullopt}	- AWS access key
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_api_endpoint:{nullopt}	- Optional API endpoint
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_api_endpoint_port:443	- TLS port override
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_azure_container:{nullopt}	- The name of the Azure container to use with Tiered Storage. Note that the container must belong to 'cloud_storage_azure_storage_account'
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_azure_shared_key:{nullopt}	- The shared key to be used for Azure Shared Key authentication with the configured Azure storage account (see 'cloud_storage_azure_storage_account)'. Note that Redpanda expects this string to be Base64 encoded.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_azure_storage_account:{nullopt}	- The name of the Azure storage account to use with Tiered Storage
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_backend:unknown	- Optional cloud storage backend variant used to select API capabilities. If not supplied, will be inferred from other configuration parameters.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_bucket:{nullopt}	- AWS bucket that should be used to store data
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_cache_check_interval:30000	- Timeout to check if cache eviction should be triggered
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_cache_size:21474836480	- Max size of archival cache
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_credentials_host:{nullopt}	- The hostname to connect to for retrieving role based credentials. Derived from cloud_storage_credentials_source if not set. Only required when using IAM role based access.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_credentials_source:config_file	- The source of credentials to connect to cloud services
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_disable_tls:0	- Disable TLS for all S3 connections
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_enable_compacted_topic_reupload:1	- Enable re-uploading data for compacted topics
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_enable_remote_read:0	- Default remote read config value for new topics
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_enable_remote_write:0	- Default remote write value for new topics
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_enable_segment_merging:1	- Enables adjacent segment merging. The segments are reuploaded if there is an opportunity for that and if it will improve the tiered-storage performance
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_enabled:0	- Enable archival storage
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_graceful_transfer_timeout:{5000ms}	- Time limit on waiting for uploads to complete before a leadership transfer.  If this is null, leadership transfers will proceed without waiting.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_housekeeping_interval_ms:300000	- Interval for cloud storage housekeeping tasks
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_idle_threshold_rps:1	- The cloud storage request rate threshold for idle state detection. If the average request rate for the configured period is lower than this threshold the cloud storage is considered being idle.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_idle_timeout_ms:10000	- Timeout used to detect idle state of the cloud storage API. If the average cloud storage request rate is below this threshold for a configured amount of time the cloud storage is considered idle and the housekeeping jobs are started.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_initial_backoff_ms:100	- Initial backoff time for exponetial backoff algorithm (ms)
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_manifest_upload_timeout_ms:10000	- Manifest upload timeout (ms)
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_max_connection_idle_time_ms:5000	- Max https connection idle time (ms)
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_max_connections:20	- Max number of simultaneous connections to S3 per shard (includes connections used for both uploads and downloads)
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_max_materialized_segments_per_shard:{nullopt}	- Maximum concurrent readers of remote data per CPU core.  If unset, value of `topic_partitions_per_shard` multiplied by 2 is used.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_max_readers_per_shard:{nullopt}	- Maximum concurrent readers of remote data per CPU core.  If unset, value of `topic_partitions_per_shard` is used, i.e. one reader per partition if the shard is at its maximum partition capacity.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_max_segments_pending_deletion_per_partition:5000	- The per-partition limit for the number of segments pending deletion from the cloud. Segments can be deleted due to retention or compaction. If this limit is breached and deletion fails, then segments will be orphaned in the cloud and will have to be removed manually
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_metadata_sync_timeout_ms:10000	- Timeout for SI metadata synchronization
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_readreplica_manifest_sync_timeout_ms:30000	- Timeout to check if new data is available for partition in S3 for read replica
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_reconciliation_interval_ms:	- 
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_recovery_temporary_retention_bytes_default:1073741824	- Retention in bytes for topics created during automated recovery
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_region:{nullopt}	- AWS region that houses the bucket used for storage
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_roles_operation_timeout_ms:30000	- Timeout for IAM role related operations (ms)
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_secret_key:{nullopt}	- AWS secret key
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_segment_max_upload_interval_sec:{nullopt}	- Time that segment can be kept locally without uploading it to the remote storage (sec)
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_segment_size_min:{nullopt}	- Smallest acceptable segment size in the cloud storage. Default: cloud_storage_segment_size_target/2
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_segment_size_target:{nullopt}	- Desired segment size in the cloud storage. Default: segment.bytes
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_segment_upload_timeout_ms:30000	- Log segment upload timeout (ms)
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_trust_file:{nullopt}	- Path to certificate that should be used to validate server certificate during TLS handshake
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_upload_ctrl_d_coeff:0	- derivative coefficient for upload PID controller.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_upload_ctrl_max_shares:1000	- maximum number of IO and CPU shares that archival upload can use
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_upload_ctrl_min_shares:100	- minimum number of IO and CPU shares that archival upload can use
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_upload_ctrl_p_coeff:-2	- proportional coefficient for upload PID controller
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_upload_ctrl_update_interval_ms:60000	- 
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_upload_loop_initial_backoff_ms:100	- Initial backoff interval when there is nothing to upload for a partition (ms)
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_upload_loop_max_backoff_ms:10000	- Max backoff interval when there is nothing to upload for a partition (ms)
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cluster_id:{3ec23137-fc4d-44ba-8520-a618f4fb922e}	- Cluster identifier
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.compacted_log_segment_size:268435456	- How large in bytes should each compacted log segment be (default 256MiB)
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.compaction_ctrl_backlog_size:{nullopt}	- target backlog size for compaction controller. if not set compaction target compaction backlog would be equal to 
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.compaction_ctrl_d_coeff:0.2	- derivative coefficient for compaction PID controller.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.compaction_ctrl_i_coeff:0	- integral coefficient for compaction PID controller.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.compaction_ctrl_max_shares:1000	- maximum number of IO and CPU shares that compaction process can use
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.compaction_ctrl_min_shares:10	- minimum number of IO and CPU shares that compaction process can use
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.compaction_ctrl_p_coeff:-12.5	- proportional coefficient for compaction PID controller. This has to be negative since compaction backlog should decrease when number of compaction shares increases
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.compaction_ctrl_update_interval_ms:30000	- 
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.controller_backend_housekeeping_interval_ms:1000	- Interval between iterations of controller backend housekeeping loop
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.controller_log_accummulation_rps_capacity_acls_and_users_operations:{nullopt}	- Maximum capacity of rate limit accumulationin controller acls and users operations limit
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.controller_log_accummulation_rps_capacity_configuration_operations:{nullopt}	- Maximum capacity of rate limit accumulationin controller configuration operations limit
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.controller_log_accummulation_rps_capacity_move_operations:{nullopt}	- Maximum capacity of rate limit accumulationin controller move operations limit
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.controller_log_accummulation_rps_capacity_node_management_operations:{nullopt}	- Maximum capacity of rate limit accumulationin controller node management operations limit
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.controller_log_accummulation_rps_capacity_topic_operations:{nullopt}	- Maximum capacity of rate limit accumulationin controller topic operations limit
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.coproc_max_batch_size:32768	- Maximum amount of bytes to read from one topic read
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.coproc_max_inflight_bytes:10485760	- Maximum amountt of inflight bytes when sending data to wasm engine
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.coproc_max_ingest_bytes:655360	- Maximum amount of data to hold from input logs in memory
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.coproc_offset_flush_interval_ms:300000	- Interval for which all coprocessor offsets are flushed to disk
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.create_topic_timeout_ms:2000	- Timeout (ms) to wait for new topic creation
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.default_num_windows:10	- Default number of quota tracking windows
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.default_topic_partitions:1	- Default number of partitions per topic
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.default_topic_replications:1	- Default replication factor for new topics
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.default_window_sec:1000	- Default quota tracking window size in milliseconds
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.delete_retention_ms:604800000	- delete segments older than this - default 1 week
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.disable_batch_cache:0	- Disable batch cache in log manager
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.disable_metrics:0	- Disable registering metrics exposed on the internal metrics endpoint (/metrics)
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.disable_public_metrics:0	- Disable registering metrics exposed on the public metrics endpoint (/public_metrics)
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.election_timeout_ms:1500	- Election timeout expressed in milliseconds
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.enable_admin_api:	- 
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.enable_auto_rebalance_on_node_add:0	- Enable automatic partition rebalancing when new nodes are added
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.enable_controller_log_rate_limiting:0	- Enables limiting of controller log write rate
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.enable_coproc:0	- Enable coprocessing mode
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.enable_idempotence:1	- Enable idempotent producer
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.enable_leader_balancer:1	- Enable automatic leadership rebalancing
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.enable_metrics_reporter:1	- Enable cluster metrics reporter
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.enable_pid_file:1	- Enable pid file. You probably don't want to change this.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.enable_rack_awareness:0	- Enables rack-aware replica assignment
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.enable_sasl:0	- Enable SASL authentication for Kafka connections, authorization is required. see also `kafka_enable_authorization`
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.enable_transactions:1	- Enable transactions
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.enable_usage:0	- Enables the usage tracking mechanism, storing windowed history of kafka/cloud_storage metrics over time
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.features_auto_enable:1	- Whether new feature flags may auto-activate after upgrades (true) or must wait for manual activation via the admin API (false)
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.fetch_max_bytes:57671680	- Maximum number of bytes returned in fetch request
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.fetch_reads_debounce_timeout:10	- Time to wait for next read in fetch request when requested min bytes wasn't reached
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.fetch_session_eviction_timeout_ms:60000	- Minimum time before which unused session will get evicted from sessions. Maximum time after which inactive session will be deleted is two time given configuration valuecache
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.full_raft_configuration_recovery_pattern:{}	- Recover raft configuration on start for NTPs matching pattern
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.group_initial_rebalance_delay:0	- Extra delay (ms) added to rebalance phase to wait for new members
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.group_max_session_timeout_ms:300000	- The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. 
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.group_min_session_timeout_ms:6000	- The minimum allowed session timeout for registered consumers. Shorter timeouts result in quicker failure detection at the cost of more frequent consumer heartbeating, which can overwhelm broker resources.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.group_new_member_join_timeout:30000	- Timeout for new member joins
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.group_offset_retention_check_ms:600000	- How often the system should check for expired group offsets.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.group_offset_retention_sec:{604800s}	- Consumer group offset retention seconds. Offset retention can be disabled by setting this value to null.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.group_topic_partitions:3	- Number of partitions in the internal group membership topic
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.health_manager_tick_interval:180000	- How often the health manager runs
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.health_monitor_max_metadata_age:10000	- Max age of metadata cached in the health monitor of non controller node
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.health_monitor_tick_interval:10000	- How often health monitor refresh cluster state
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.id_allocator_batch_size:1000	- Id allocator allocates messages in batches (each batch is a one log record) and then serves requests from memory without touching the log until the batch is exhausted.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.id_allocator_log_capacity:100	- Capacity of the id_allocator log in number of messages. Once it reached id_allocator_stm should compact the log.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.id_allocator_replication:	- 
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.internal_topic_replication_factor:3	- Target replication factor for internal topics
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.join_retry_timeout_ms:5000	- Time between cluster join retries in milliseconds
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_admin_topic_api_rate:{nullopt}	- Target quota rate (partition mutations per default_window_sec)
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_batch_max_bytes:1048576	- Maximum size of a batch processed by server. If batch is compressed the limit applies to compressed batch size
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_client_group_byte_rate_quota:{}	- Per-group target produce quota byte rate (bytes per second). Client is considered part of the group if client_id contains clients_prefix
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_client_group_fetch_byte_rate_quota:{}	- Per-group target fetch quota byte rate (bytes per second). Client is considered part of the group if client_id contains clients_prefix
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_connection_rate_limit:{nullopt}	- Maximum connections per second for one core
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_connection_rate_limit_overrides:{}	- Overrides for specific ips for maximum connections per second for one core
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_connections_max:{nullopt}	- Maximum number of Kafka client connections per broker
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_connections_max_overrides:{}	- Per-IP overrides of kafka connection count limit, list of <ip>:<count> strings
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_connections_max_per_ip:{nullopt}	- Maximum number of Kafka client connections from each IP address, per broker
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_enable_authorization:{nullopt}	- Enable authorization for Kafka connections. Values:- `nil`: Ignored. Authorization is enabled with `enable_sasl: true`; `true`: authorization is required; `false`: authorization is disabled. See also: `enable_sasl` and `kafka_api[].authentication_method`
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_enable_partition_reassignment:1	- Enable the Kafka partition reassignment API
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_group_recovery_timeout_ms:30000	- Kafka group recovery timeout expressed in milliseconds
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_max_bytes_per_fetch:67108864	- Limit fetch responses to this many bytes, even if total of partition bytes limits is higher
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_mtls_principal_mapping_rules:{nullopt}	- Principal Mapping Rules for mTLS Authentication on the Kafka API
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_nodelete_topics:{__audit, __consumer_offsets, _schemas}	- Prevents the topics in the list from being deleted via the kafka api
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_noproduce_topics:{__audit}	- Prevents the topics in the list from having message produced to them via the kafka api
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_qdc_depth_alpha:0.8	- Smoothing factor for kafka queue depth control depth tracking.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_qdc_depth_update_ms:7000	- Update frequency for kafka queue depth control.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_qdc_enable:0	- Enable kafka queue depth control.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_qdc_idle_depth:10	- Queue depth when idleness is detected in kafka queue depth control.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_qdc_latency_alpha:0.002	- Smoothing parameter for kafka queue depth control latency tracking.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_qdc_max_depth:100	- Maximum queue depth used in kafka queue depth control.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_qdc_max_latency_ms:80	- Max latency threshold for kafka queue depth control depth tracking.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_qdc_min_depth:1	- Minimum queue depth used in kafka queue depth control.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_qdc_window_count:12	- Number of windows used in kafka queue depth control latency tracking.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_qdc_window_size_ms:1500	- Window size for kafka queue depth control latency tracking.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_quota_balancer_min_shard_throughput_bps:256	- The lowest value of the throughput quota a shard can get in the process of quota balancing, in bytes/s. 0 means there is no minimum.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_quota_balancer_min_shard_throughput_ratio:0.01	- The lowest value of the throughput quota a shard can get in the process of quota balancing, expressed as a ratio of default shard quota. 0 means there is no minimum, 1 means no quota can be taken away by the balancer.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_quota_balancer_node_period_ms:750	- Intra-node throughput quota balancer invocation period, in milliseconds. Value of 0 disables the balancer and makes all the throughput quotas immutable.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_quota_balancer_window_ms:5000	- Time window used to average current throughput measurement for quota balancer, in milliseconds
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_request_max_bytes:104857600	- Maximum size of a single request processed via Kafka API
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_rpc_server_stream_recv_buf:{nullopt}	- Userspace receive buffer max size in bytes
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_rpc_server_tcp_recv_buf:{nullopt}	- Kafka server TCP receive buffer size in bytes.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_rpc_server_tcp_send_buf:{nullopt}	- Kafka server TCP transmit buffer size in bytes.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_throughput_controlled_api_keys:{produce, fetch}	- List of Kafka API keys that are subject to cluster-wide and node-wide thoughput limit control
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_throughput_limit_node_in_bps:{nullopt}	- Node wide throughput ingress limit - maximum kafka traffic throughput allowed on the ingress side of each node, in bytes/s. Default is no limit.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_throughput_limit_node_out_bps:{nullopt}	- Node wide throughput egress limit - maximum kafka traffic throughput allowed on the egress side of each node, in bytes/s. Default is no limit.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kvstore_flush_interval:10	- Key-value store flush interval (ms)
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kvstore_max_segment_size:16777216	- Key-value maximum segment size (bytes)
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.leader_balancer_idle_timeout:120000	- Leadership rebalancing idle timeout
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.leader_balancer_mode:greedy_balanced_shards	- Leader balancer mode
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.leader_balancer_mute_timeout:300000	- Leadership rebalancing mute timeout
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.leader_balancer_transfer_limit_per_shard:512	- Per shard limit for in progress leadership transfers
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.legacy_group_offset_retention_enabled:0	- Group offset retention is enabled by default in versions of Redpanda >= 23.1. To enable offset retention after upgrading from an older version set this option to true.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.log_cleanup_policy:delete	- Default topic cleanup policy
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.log_compaction_interval_ms:10000	- How often do we trigger background compaction
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.log_compression_type:producer	- Default topic compression type
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.log_message_timestamp_type:CreateTime	- Default topic messages timestamp type
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.log_segment_ms:{1209600000ms}	- Default log segment lifetime in ms for topics which do not set segment.ms
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.log_segment_ms_max:31536000000	- Upper bound on topic segment.ms: higher values will be clamped to this value
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.log_segment_ms_min:60000	- Lower bound on topic segment.ms: lower values will be clamped to this value
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.log_segment_size:134217728	- Default log segment size in bytes for topics which do not set segment.bytes
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.log_segment_size_jitter_percent:5	- Random variation to the segment size limit used for each partition
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.log_segment_size_max:{nullopt}	- Upper bound on topic segment.bytes: higher values will be clamped to this limit
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.log_segment_size_min:{1}	- Lower bound on topic segment.bytes: lower values will be clamped to this limit
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.max_compacted_log_segment_size:5368709120	- Max compacted segment size after consolidation
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.max_concurrent_producer_ids:18446744073709551615	- Max cache size for pids which rm_stm stores inside internal state. In overflow rm_stm will delete old pids and clear their status
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.max_kafka_throttle_delay_ms:30000	- Fail-safe maximum throttle delay on kafka requests
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.max_version:	- 
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.members_backend_retry_ms:5000	- Time between members backend reconciliation loop retries 
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.memory_abort_on_alloc_failure:1	- If true, the redpanda process will terminate immediately when an allocation cannot be satisfied due to memory exhasution. If false, an exception is thrown instead.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.metadata_dissemination_interval_ms:3000	- Interaval for metadata dissemination batching
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.metadata_dissemination_retries:30	- Number of attempts of looking up a topic's meta data like shard before failing a request
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.metadata_dissemination_retry_delay_ms:320	- Delay before retry a topic lookup in a shard or other meta tables
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.metadata_status_wait_timeout_ms:2000	- Maximum time to wait in metadata request for cluster health to be refreshed
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.metrics_reporter_report_interval:86400000	- cluster metrics reporter report interval
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.metrics_reporter_tick_interval:60000	- Cluster metrics reporter tick interval
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.metrics_reporter_url:https://m.rp.vectorized.io/v2	- cluster metrics reporter url
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.min_version:	- 
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.node_isolation_heartbeat_timeout:3000	- How long after the last heartbeat request a node will wait before considering itself to be isolated
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.node_management_operation_timeout_ms:5000	- Timeout for executing node management operations
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.node_status_interval:100	- Time interval between two node status messages. Node status messages establish liveness status outside of the Raft protocol.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.partition_autobalancing_concurrent_moves:50	- Number of partitions that can be reassigned at once
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.partition_autobalancing_max_disk_usage_percent:80	- Disk usage threshold that triggers moving partitions from the node
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.partition_autobalancing_mode:node_add	- Partition autobalancing mode
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.partition_autobalancing_movement_batch_size_bytes:5368709120	- Total size of partitions that autobalancer is going to move in one batch
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.partition_autobalancing_node_availability_timeout_sec:900000	- Node unavailability timeout that triggers moving partitions from the node
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.partition_autobalancing_tick_interval_ms:30000	- Partition autobalancer tick interval
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.quota_manager_gc_sec:30000	- Quota manager GC frequency in milliseconds
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.raft_heartbeat_disconnect_failures:3	- After how many failed heartbeats to forcibly close an unresponsive TCP connection.  Set to 0 to disable force disconnection.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.raft_heartbeat_interval_ms:150	- Milliseconds for raft leader heartbeats
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.raft_heartbeat_timeout_ms:3000	- raft heartbeat RPC timeout
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.raft_io_timeout_ms:10000	- Raft I/O timeout
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.raft_learner_recovery_rate:104857600	- Raft learner recovery rate limit in bytes per sec
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.raft_max_concurrent_append_requests_per_follower:16	- Maximum number of concurrent append entries requests sent by leader to one follower
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.raft_max_recovery_memory:{nullopt}	- Max memory that can be used for reads in raft recovery process by default 15% of total memory
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.raft_recovery_default_read_size:524288	- default size of read issued during raft follower recovery
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.raft_recovery_throttle_disable_dynamic_mode:0	- Disables dynamic rate allocation in recovery throttle (advanced).
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.raft_replicate_batch_window_size:1048576	- Max size of requests cached for replication
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.raft_smp_max_non_local_requests:{nullopt}	- Maximum number of x-core requests pending in Raft seastar::smp group. (for more details look at `seastar::smp_service_group` documentation)
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.raft_timeout_now_timeout_ms:1000	- Timeout for a timeout now request
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.raft_transfer_leader_recovery_timeout_ms:10000	- Timeout waiting for follower recovery when transferring leadership
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.readers_cache_eviction_timeout_ms:30000	- Duration after which inactive readers will be evicted from cache
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.reclaim_batch_cache_min_free:67108864	- Free memory limit that will be kept by batch cache background reclaimer
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.reclaim_growth_window:3000	- Length of time in which reclaim sizes grow
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.reclaim_max_size:4194304	- Maximum batch cache reclaim size
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.reclaim_min_size:131072	- Minimum batch cache reclaim size
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.reclaim_stable_window:10000	- Length of time above which growth is reset
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.recovery_append_timeout_ms:5000	- Timeout for append entries requests issued while updating stale follower
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.release_cache_on_segment_roll:0	- Free cache when segments roll
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.replicate_append_timeout_ms:3000	- Timeout for append entries requests issued while replicating entries
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.retention_bytes:{nullopt}	- Default max bytes per partition on disk before triggering a compaction
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.retention_local_target_bytes_default:{nullopt}	- Local retention size target for partitions of topics with cloud storage write enabled
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.retention_local_target_ms_default:86400000	- Local retention time target for partitions of topics with cloud storage write enabled
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.rm_sync_timeout_ms:10000	- Time to wait state catch up before rejecting a request
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.rm_violation_recovery_policy:	- 
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.rpc_server_listen_backlog:{nullopt}	- TCP connection queue length for Kafka server and internal RPC server
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.rpc_server_tcp_recv_buf:{nullopt}	- Internal RPC TCP receive buffer size in bytes.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.rpc_server_tcp_send_buf:{nullopt}	- Internal RPC TCP transmit buffer size in bytes.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.rps_limit_acls_and_users_operations:1000	- Rate limit for controller acls and users operations
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.rps_limit_configuration_operations:1000	- Rate limit for controller configuration operations
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.rps_limit_move_operations:1000	- Rate limit for controller move operations
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.rps_limit_node_management_operations:1000	- Rate limit for controller node management operations
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.rps_limit_topic_operations:1000	- Rate limit for controller topic operations
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.sasl_kerberos_config:/etc/krb5.conf	- The location of the Kerberos krb5.conf file for Redpanda
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.sasl_kerberos_keytab:/var/lib/redpanda/redpanda.keytab	- The location of the Kerberos keytab file for Redpanda
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.sasl_kerberos_principal:redpanda	- The primary of the Kerberos Service Principal Name (SPN) for Redpanda
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.sasl_kerberos_principal_mapping:{DEFAULT}	- Rules for mapping Kerberos Principal Names to Redpanda User Principals
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.sasl_mechanisms:{SCRAM}	- A list of supported SASL mechanisms. `SCRAM` and `GSSAPI` are allowed.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.seed_server_meta_topic_partitions:	- 
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.segment_appender_flush_timeout_ms:1000	- Maximum delay until buffered data is written
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.segment_fallocation_step:33554432	- Size for segments fallocation
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.seq_table_min_size:1000	- Minimum size of the seq table non affected by compaction
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.storage_compaction_index_memory:134217728	- Maximum number of bytes that may be used on each shard by compactionindex writers
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.storage_ignore_timestamps_in_future_sec:{nullopt}	- If set, timestamps more than this many seconds in the future relative tothe server's clock will be ignored for data retention purposes, and retention will act based on another timestamp in the same segment, or the mtime of the segment file if no valid timestamp is available
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.storage_max_concurrent_replay:1024	- Maximum number of partitions' logs that will be replayed concurrently at startup, or flushed concurrently on shutdown.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.storage_min_free_bytes:10485760	- Threshold of minimum bytes free space before rejecting producers.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.storage_read_buffer_size:131072	- Size of each read buffer (one per in-flight read, per log segment)
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.storage_read_readahead_count:10	- How many additional reads to issue ahead of current read location
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.storage_space_alert_free_threshold_bytes:0	- Threshold of minimim bytes free space before setting storage space alert
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.storage_space_alert_free_threshold_percent:5	- Threshold of minimim percent free space before setting storage space alert
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.storage_strict_data_init:0	- Requires that an empty file named `.redpanda_data_dir` be present in the data directory. Redpanda will refuse to start if it is not found.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.storage_target_replay_bytes:10737418240	- Target bytes to replay from disk on startup after clean shutdown: controls frequency of snapshots and checkpoints
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.superusers:{}	- List of superuser usernames
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.target_fetch_quota_byte_rate:{nullopt}	- Target fetch size quota byte rate (bytes per second) - disabled default
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.target_quota_byte_rate:2147483648	- Target request size quota byte rate (bytes per second) - 2GB default
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.tm_sync_timeout_ms:10000	- Time to wait state catch up before rejecting a request
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.tm_violation_recovery_policy:	- 
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.topic_fds_per_partition:{5}	- Required file handles per partition when creating topics
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.topic_memory_per_partition:{1048576}	- Required memory per partition when creating topics
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.topic_partitions_per_shard:1000	- Maximum number of partitions which may be allocated to one shard (CPU core)
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.topic_partitions_reserve_shard0:2	- Reserved partition slots on shard (CPU core) 0 on each node.  If this is >= topic_partitions_per_core, no data partitions will be scheduled on shard 0
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.transaction_coordinator_cleanup_policy:delete	- Cleanup policy for a transaction coordinator topic
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.transaction_coordinator_delete_retention_ms:604800000	- delete segments older than this - default 1 week
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.transaction_coordinator_log_segment_size:1073741824	- How large in bytes should each log segment be (default 1G)
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.transaction_coordinator_replication:	- 
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.transactional_id_expiration_ms:604800000	- Producer ids are expired once this time has elapsed after the last write with the given producer id.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.tx_log_stats_interval_s:10000	- How often to log per partition tx stats, works only with debug logging enabled.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.tx_timeout_delay_ms:1000	- Delay before scheduling next check for timed out transactions
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.usage_disk_persistance_interval_sec:300000	- The interval in which all usage stats are written to disk
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.usage_num_windows:24	- The number of windows to persist in memory and disk
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.usage_window_width_interval_sec:3600000	- The width of a usage window, tracking cloud and kafka ingress/egress traffic each interval
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.use_fetch_scheduler_group:1	- Use a separate scheduler group for fetch processing
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.use_scheduling_groups:	- 
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.wait_for_leader_timeout_ms:5000	- Timeout (ms) to wait for leadership in metadata cache
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.zstd_decompress_workspace_bytes:8388608	- Size of the zstd decompression workspace
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:662 - Node configuration properties:
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:663 - (use `rpk redpanda config set <cfg> <value>` to change)
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.admin:{{:{host: 0.0.0.0, port: 9644}}}	- Address and port of admin server
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.admin_api_doc_dir:/usr/share/redpanda/admin-api-doc	- Admin API doc directory
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.admin_api_tls:{}	- TLS configuration for admin HTTP server
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.advertised_kafka_api:{{INSIDE:{host: redpanda-2, port: 29093}}, {OUTSIDE:{host: localhost, port: 9093}}}	- Address of Kafka API published to the clients
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.advertised_rpc_api:{{host: redpanda-2, port: 33146}}	- Address of RPC endpoint published to other cluster members
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.cloud_storage_cache_directory:{nullopt}	- Directory for archival cache. Should be present when `cloud_storage_enabled` is present
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.coproc_supervisor_server:{host: 127.0.0.1, port: 43189}	- IpAddress and port for supervisor service
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.crash_loop_limit:{nullopt}	- Maximum consecutive crashes (unclean shutdowns) allowed after which operator intervention is needed to startup the broker.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.dashboard_dir:	- 
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.data_directory:{data_directory="/var/lib/redpanda/data"}	- Place where redpanda will keep the data
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.developer_mode:1	- Skips most of the checks performed at startup, not recomended for production use
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.empty_seed_starts_cluster:1	- If true, an empty seed_servers list will denote that this node should form a cluster. At most one node in the cluster should be configured configured with an empty seed_servers list. If no such configured node exists, or if configured to false, all nodes denoted by the seed_servers list must be identical among those nodes' configurations, and those nodes will form the initial cluster.
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.enable_central_config:	- 
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_api:{{INSIDE:{host: 0.0.0.0, port: 29093}:{nullopt}}, {OUTSIDE:{host: 0.0.0.0, port: 9093}:{nullopt}}}	- Address and port of an interface to listen for Kafka API requests
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.kafka_api_tls:{}	- TLS configuration for Kafka API endpoint
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.node_id:{1}	- Unique id identifying a node in the cluster. If missing, a unique id will be assigned for this node when it joins the cluster
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.rack:{nullopt}	- Rack identifier
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.rpc_server:{host: 0.0.0.0, port: 33146}	- IpAddress and port for RPC server
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.rpc_server_tls:{ enabled: 0 key/cert files: {nullopt} ca file: {nullopt} client_auth_required: 0 }	- TLS configuration for RPC server
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - redpanda.seed_servers:{addr: {host: redpanda-1, port: 33145}}	- List of the seed servers used to join current cluster. If the seed_server list is empty the node will be a cluster root and it will form a new cluster
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - pandaproxy.advertised_pandaproxy_api:{{INSIDE:{host: redpanda-2, port: 28083}}, {OUTSIDE:{host: localhost, port: 8083}}}	- Rest API address and port to publish to client
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - pandaproxy.api_doc_dir:/usr/share/redpanda/proxy-api-doc	- API doc directory
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - pandaproxy.client_cache_max_size:10	- The maximum number of kafka clients in the LRU cache
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - pandaproxy.client_keep_alive:300000	- Time in milliseconds that an idle connection may remain open
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - pandaproxy.consumer_instance_timeout_ms:300000	- How long to wait for an idle consumer before removing it
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - pandaproxy.pandaproxy_api:{{INSIDE:{host: 0.0.0.0, port: 28083}:<nullopt>}, {OUTSIDE:{host: 0.0.0.0, port: 8083}:<nullopt>}}	- Rest API listen address and port
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - pandaproxy.pandaproxy_api_tls:{}	- TLS configuration for Pandaproxy api
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - pandaproxy_client.broker_tls:{ enabled: 0 key/cert files: {nullopt} ca file: {nullopt} client_auth_required: 0 }	- TLS configuration for the brokers
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - pandaproxy_client.brokers:{{host: 0.0.0.0, port: 29093}}	- List of address and port of the brokers
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - pandaproxy_client.client_identifier:{pandaproxy_client}	- Identifier to use within the kafka request header
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - pandaproxy_client.consumer_heartbeat_interval_ms:500	- Interval (in milliseconds) for consumer heartbeats
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - pandaproxy_client.consumer_rebalance_timeout_ms:2000	- Timeout (in milliseconds) for consumer rebalance
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - pandaproxy_client.consumer_request_max_bytes:1048576	- Max bytes to fetch per request
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - pandaproxy_client.consumer_request_timeout_ms:100	- Interval (in milliseconds) for consumer request timeout
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - pandaproxy_client.consumer_session_timeout_ms:300000	- Timeout (in milliseconds) for consumer session
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - pandaproxy_client.produce_batch_delay_ms:100	- Delay (in milliseconds) to wait before sending batch
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - pandaproxy_client.produce_batch_record_count:1000	- Number of records to batch before sending to broker
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - pandaproxy_client.produce_batch_size_bytes:1048576	- Number of bytes to batch before sending to broker
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - pandaproxy_client.retries:5	- Number of times to retry a request to a broker
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - pandaproxy_client.retry_base_backoff_ms:100	- Delay (in milliseconds) for initial retry backoff
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - pandaproxy_client.sasl_mechanism:	- The SASL mechanism to use when connecting
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - pandaproxy_client.scram_password:	- Password to use for SCRAM authentication mechanisms
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - pandaproxy_client.scram_username:	- Username to use for SCRAM authentication mechanisms
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - schema_registry.api_doc_dir:/usr/share/redpanda/proxy-api-doc	- API doc directory
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - schema_registry.schema_registry_api:{{:{host: 0.0.0.0, port: 8081}:<nullopt>}}	- Schema Registry API listen address and port
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - schema_registry.schema_registry_api_tls:{}	- TLS configuration for Schema Registry API
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - schema_registry.schema_registry_replication_factor:{nullopt}	- Replication factor for internal _schemas topic.  If unset, defaults to `default_topic_replication`
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - schema_registry_client.broker_tls:{ enabled: 0 key/cert files: {nullopt} ca file: {nullopt} client_auth_required: 0 }	- TLS configuration for the brokers
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - schema_registry_client.brokers:{{host: 0.0.0.0, port: 29093}}	- List of address and port of the brokers
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - schema_registry_client.client_identifier:{schema_registry_client}	- Identifier to use within the kafka request header
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - schema_registry_client.consumer_heartbeat_interval_ms:500	- Interval (in milliseconds) for consumer heartbeats
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - schema_registry_client.consumer_rebalance_timeout_ms:2000	- Timeout (in milliseconds) for consumer rebalance
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - schema_registry_client.consumer_request_max_bytes:1048576	- Max bytes to fetch per request
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - schema_registry_client.consumer_request_timeout_ms:100	- Interval (in milliseconds) for consumer request timeout
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - schema_registry_client.consumer_session_timeout_ms:10000	- Timeout (in milliseconds) for consumer session
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - schema_registry_client.produce_batch_delay_ms:0	- Delay (in milliseconds) to wait before sending batch
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - schema_registry_client.produce_batch_record_count:0	- Number of records to batch before sending to broker
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - schema_registry_client.produce_batch_size_bytes:0	- Number of bytes to batch before sending to broker
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - schema_registry_client.retries:5	- Number of times to retry a request to a broker
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - schema_registry_client.retry_base_backoff_ms:100	- Delay (in milliseconds) for initial retry backoff
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - schema_registry_client.sasl_mechanism:	- The SASL mechanism to use when connecting
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - schema_registry_client.scram_password:	- Password to use for SCRAM authentication mechanisms
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:634 - schema_registry_client.scram_username:	- Username to use for SCRAM authentication mechanisms
+redpanda-2  | INFO  2023-05-30 23:31:26,226 [shard 0] main - application.cc:414 - Setting abort_on_allocation_failure (abort on OOM): true
+redpanda-2  | INFO  2023-05-30 23:31:26,228 [shard 0] syschecks - Writing pid file "/var/lib/redpanda/data/pid.lock"
+redpanda-2  | INFO  2023-05-30 23:31:26,229 [shard 0] storage - directories.h:33 - Checking `/var/lib/redpanda/data` for supported filesystems
+redpanda-2  | ERROR 2023-05-30 23:31:26,229 [shard 0] syschecks - Path: `/var/lib/redpanda/data' is not on XFS. This is a non-supported setup. Expect poor performance.
+redpanda-2  | INFO  2023-05-30 23:31:26,262 [shard 0] storage - segment_set.cc:308 - Recovered: {offset_tracker:{term:0, base_offset:62, committed_offset:69, dirty_offset:69}, compacted_segment=0, finished_self_compaction=0, generation={1}, reader={/var/lib/redpanda/data/redpanda/kvstore/0_0/62-0-v1.log, (3455 bytes)}, writer=nullptr, cache=nullptr, compaction_index:nullopt, closed=0, tombstone=0, index={file:/var/lib/redpanda/data/redpanda/kvstore/0_0/62-0-v1.base_index, offsets:{62}, index:{header_bitflags:0, base_offset:{62}, max_offset:{69}, base_timestamp:{timestamp: 1685489369714}, max_timestamp:{timestamp: 1685489480162}, batch_timestamps_are_monotonic:1, index(1,1,1)}, step:32768, needs_persistence:0}}
+redpanda-2  | INFO  2023-05-30 23:31:26,262 [shard 0] kvstore - kvstore.cc:514 - Replaying segment with base offset 62
+redpanda-2  | INFO  2023-05-30 23:31:26,263 [shard 0] kvstore - kvstore.cc:543 - Removing old segment with base offset 54
+redpanda-2  | INFO  2023-05-30 23:31:26,264 [shard 0] main - application.cc:1732 - Loaded stored node ID for node: 1
+redpanda-2  | INFO  2023-05-30 23:31:26,264 [shard 0] main - application.cc:1759 - Loaded existing UUID for node: {180631a2-7ef2-440e-aa53-cdde56275354}
+redpanda-2  | INFO  2023-05-30 23:31:26,264 [shard 0] main - application.cc:1792 - Started RPC server listening at {host: 0.0.0.0, port: 33146}
+redpanda-2  | INFO  2023-05-30 23:31:26,264 [shard 0] cluster - cluster_discovery.cc:99 - Controller directory /var/lib/redpanda/data/redpanda/controller/0_0 not empty; assuming existing cluster exists
+redpanda-2  | INFO  2023-05-30 23:31:26,265 [shard 0] main - application.cc:1819 - Starting Redpanda with node_id 1, cluster UUID {{5daa00be-7276-4054-a9bd-d02de4eca43f}}
+redpanda-2  | INFO  2023-05-30 23:31:26,265 [shard 0] raft - coordinated_recovery_throttle.cc:113 - Starting recovery throttle, rate: 104857600
+redpanda-2  | INFO  2023-05-30 23:31:26,265 [shard 0] main - application.cc:1139 - Partition manager started
+redpanda-2  | INFO  2023-05-30 23:31:26,270 [shard 0] raft - [group_id:0, {redpanda/controller/0}] consensus.cc:1193 - Starting
+redpanda-2  | INFO  2023-05-30 23:31:26,270 [shard 0] raft - [group_id:0, {redpanda/controller/0}] consensus.cc:1485 - Recovered persistent state from kvstore: voted for: {id: {1}, revision: {0}}, term: 6
+redpanda-2  | INFO  2023-05-30 23:31:26,270 [shard 0] raft - [group_id:0, {redpanda/controller/0}] consensus.cc:1227 - Starting with voted_for {id: {1}, revision: {0}} term 6 initial_state false
+redpanda-2  | INFO  2023-05-30 23:31:26,270 [shard 0] raft - [group_id:0, {redpanda/controller/0}] consensus.cc:1273 - Read bootstrap state: data_seen 0 config_seen 0 eol false commit 0 term 0 prev_idx 0 prev_term 0 config_tracker -9223372036854775808 commit_base_tracker -9223372036854775808 configurations {}
+redpanda-2  | INFO  2023-05-30 23:31:26,270 [shard 0] raft - [group_id:0, {redpanda/controller/0}] consensus.cc:1274 - Current log offsets: {start_offset:0, committed_offset:14, committed_offset_term:6, dirty_offset:14, dirty_offset_term:6, last_term_start_offset:14}
+redpanda-2  | INFO  2023-05-30 23:31:26,270 [shard 0] raft - [group_id:0, {redpanda/controller/0}] consensus.cc:1298 - Truncating configurations at 14
+redpanda-2  | INFO  2023-05-30 23:31:26,280 [shard 0] storage - segment.cc:673 - Creating new segment /var/lib/redpanda/data/redpanda/kvstore/0_0/70-0-v1.log
+redpanda-2  | INFO  2023-05-30 23:31:26,294 [shard 0] raft - [group_id:0, {redpanda/controller/0}] consensus.cc:1398 - started raft, log offsets: {start_offset:0, committed_offset:14, committed_offset_term:6, dirty_offset:14, dirty_offset_term:6, last_term_start_offset:14}, term: 6, configuration: {current: {voters: {{id: {1}, revision: {0}}}, learners: {}}, old:{nullopt}, revision: 0, update: {nullopt}, version: 4, brokers: {{id: 1, kafka_advertised_listeners: {{INSIDE:{host: redpanda-2, port: 29093}}, {OUTSIDE:{host: localhost, port: 9093}}}, rpc_address: {host: redpanda-2, port: 33146}, rack: {nullopt}, properties: {cores 1, mem_available 1, disk_available 250}}}}
+redpanda-2  | INFO  2023-05-30 23:31:26,294 [shard 0] cluster - drain_manager.cc:21 - Drain manager starting
+redpanda-2  | INFO  2023-05-30 23:31:26,294 [shard 0] cluster - members_manager.cc:88 - starting cluster::members_manager...
+redpanda-2  | INFO  2023-05-30 23:31:26,294 [shard 0] cluster - controller.cc:354 - Controller log replay starting (to offset 14)
+redpanda-2  | INFO  2023-05-30 23:31:26,295 [shard 0] cluster - bootstrap_backend.cc:88 - Applying update to bootstrap_manager
+redpanda-2  | INFO  2023-05-30 23:31:26,308 [shard 0] cluster - controller.cc:366 - Controller log replay complete.
+redpanda-2  | INFO  2023-05-30 23:31:26,308 [shard 0] cluster - controller.cc:645 - Member of cluster UUID {5daa00be-7276-4054-a9bd-d02de4eca43f}
+redpanda-2  | INFO  2023-05-30 23:31:26,308 [shard 0] cluster - feature_manager.cc:80 - Starting...
+redpanda-2  | WARN  2023-05-30 23:31:26,309 [shard 0] admin_api_server - admin_server.cc:389 - Insecure Admin API listener on 0.0.0.0:9644, consider enabling `admin_api_require_auth`
+redpanda-2  | INFO  2023-05-30 23:31:26,309 [shard 0] admin_api_server - admin_server.cc:177 - Started HTTP admin service listening at {{:{host: 0.0.0.0, port: 9644}}}
+redpanda-2  | INFO  2023-05-30 23:31:26,309 [shard 0] main - application.cc:1855 - Started Pandaproxy listening at {{INSIDE:{host: 0.0.0.0, port: 28083}:<nullopt>}, {OUTSIDE:{host: 0.0.0.0, port: 8083}:<nullopt>}}
+redpanda-2  | INFO  2023-05-30 23:31:26,310 [shard 0] main - application.cc:1863 - Started Schema Registry listening at {{:{host: 0.0.0.0, port: 8081}:<nullopt>}}
+redpanda-2  | INFO  2023-05-30 23:31:26,310 [shard 0] main - application.cc:2079 - Waiting for cluster membership
+redpanda-2  | INFO  2023-05-30 23:31:26,310 [shard 0] main - application.cc:2088 - Started Kafka API server listening at {{INSIDE:{host: 0.0.0.0, port: 29093}:{nullopt}}, {OUTSIDE:{host: 0.0.0.0, port: 9093}:{nullopt}}}
+redpanda-2  | INFO  2023-05-30 23:31:26,310 [shard 0] main - application.cc:1870 - Successfully started Redpanda!
+redpanda-2  | INFO  2023-05-30 23:31:27,963 [shard 0] raft - [group_id:0, {redpanda/controller/0}] vote_stm.cc:264 - becoming the leader term:7
+redpanda-2  | INFO  2023-05-30 23:31:27,963 [shard 0] storage - segment.cc:673 - Creating new segment /var/lib/redpanda/data/redpanda/controller/0_0/15-7-v1.log
+redpanda-2  | INFO  2023-05-30 23:31:27,989 [shard 0] cluster - leader_balancer.cc:98 - Leader balancer: controller leadership detected. Starting rebalancer in 30 seconds
+redpanda-2  | INFO  2023-05-30 23:31:27,989 [shard 0] raft - [group_id:0, {redpanda/controller/0}] vote_stm.cc:279 - became the leader term: 7
+redpanda-1  | INFO  2023-05-30 23:31:28,130 [shard 0] raft - [group_id:0, {redpanda/controller/0}] vote_stm.cc:264 - becoming the leader term:7
+redpanda-1  | INFO  2023-05-30 23:31:28,130 [shard 0] storage - segment.cc:673 - Creating new segment /var/lib/redpanda/data/redpanda/controller/0_0/15-7-v1.log
+redpanda-1  | INFO  2023-05-30 23:31:28,154 [shard 0] cluster - leader_balancer.cc:98 - Leader balancer: controller leadership detected. Starting rebalancer in 30 seconds
+redpanda-1  | INFO  2023-05-30 23:31:28,154 [shard 0] raft - [group_id:0, {redpanda/controller/0}] vote_stm.cc:279 - became the leader term: 7
+Gracefully stopping... (press Ctrl+C again to force)

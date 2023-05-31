@@ -42,3 +42,43 @@ This document describes most basic cli commands for two popular streaming broker
 afka1:9092 --delete --topic messages`
 
 ![Output](./img/kafka-delete-topic.png)
+
+## Redpanda
+
+### Prerequisites
+
+1. `docker-compose -f docker-compose.redpanda.yml up`
+2. `docker ps`
+![Output](./img/redpanda-docker-ps.png)
+3. `docker exec -it redpanda2 rpk cluster info` - verify cluster connectivity
+![Output](./img/redpanda-cluster-status.png)
+
+### Creating a topic
+
+`docker exec -it redpanda2 rpk topic create messages`
+
+![Output](./img/redpanda-create-topic.png)
+
+### Listing all topics
+
+`docker exec -it redpanda2 rpk topic list`
+
+![Output](./img/redpanda-list-topics.png)
+
+### Sending messages
+
+`docker exec -it redpanda2 rpk topic produce messages`
+
+![Output](./img/redpanda-send-message.png)
+
+### Receiving messages
+
+`docker exec -it redpanda2 rpk topic consume messages`
+
+![Output](./img/redpanda-receive-message.png)
+
+### Deleting the topic
+
+`docker exec -it redpanda2 rpk topic delete messages`
+
+![Output](./img/redpanda-delete-topic.png)
